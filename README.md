@@ -30,7 +30,7 @@ The main contributions of our proposed method can be summarized as follows:
 
 In this section, all the details of the proposed UBCDT-GAN will be described. We will first introduce our method, which mainly consists of two networks. The first network Bi-directional Cycle Domain Transfer Network (BCDTN) aims to perform domain translation operation on two different domain image sets. It contains forward cycle module and backward cycle module, and the pipeline is shown in Fig 1. The second network is SESRN consists of Semantic Encoder (SE), Joint Discriminator $D_{SR}$, Generator $G_{SR}$ and Content Extractor $CE$. The SESRN takes the real-like LR image as input and super-resolve it to HR image, and the details can be seen in Fig 2. Moreover, we will introduce the design of the loss functions. The overview of the proposed as shown in Fig 1.
 
-![UL_SESRN_overview_0.1](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/UL_SESRN_overview_0.1.png)
+![UL_SESRN_overview_0.1](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/UL_SESRN_overview_0.1.png)
 
 Figure 2. **The proposed SESRN and its components**: Semantic Encoder $SE$, Generator $G_{SR}$, Joint Discriminator $D_{SR}$ and Content Extractor $\phi$. For $D_{SR}$, ESLDSN represents the Embedded Semantics-Level Discriminative Sub-Net, ILDSN represents the Image-Level Discriminative Sub-Net, and FCM denotes Fully Connected Module. As for the generator $G_{SR}$, there are three stages: Shallow Feature Module (SFM), Multi-level Residual Dense Module (MRDM), and Upsampling Module (UM). $I^{HR}$ and $\widehat{I}^{LR}_{real}$ denote HR images and LR images respectively. $I^{SR}$ is SR images from $G$. Furthermore, $SE(\cdot)$ denotes the embedded semantics obtained from $SE$. $D_{SR}(\cdot)$ represents the output probability of $D_{SR}$. $\phi(I^{HR})$ and $\phi(I^{SR})$ describes the features learned by content extractor $\phi$.
 
@@ -152,7 +152,7 @@ Finally, we adopt the $L^{UBCDTN}_{total}$ to optimize the whole UBCDTN.
 
 In this section, we first present the architecture of $G_{A}$ and $G_{B}$, and then describe the basic structure of $D_{A}$ and $D_{B}$. Finally, we introduce the VGG19 based feature extractor $FE_{A}$ and $FE_{B}$.
 
-![UL_UNet0.1](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/UL_UNet0.1.png)
+![UL_UNet0.1](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/UL_UNet0.1.png)
 
 Figure 3. **The architecture of $G_A$ and $G_B$**. The $K$, $n$, $s$ indicates kernel size, number of filters, and the stride size. Conv denote convolutional layer, IN is instance normalization layer and UP represents Upsampling layer. The shallow features are concatenated with deep features through skip connection.
 
@@ -166,7 +166,7 @@ The architecture of $G_{A}$ and $G_{B}$ is based on U-Net. As shown in Figure 3,
 
 ##### Discriminator: $D_{A}$ and  $D_{B}$
 
-![UL_Dis0.1](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/UL_Dis0.1.png)
+![UL_Dis0.1](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/UL_Dis0.1.png)
 
 Figure 4. **The architecture of discriminator $D_{A}$ and $D_{B}$**. The terms of $K$, $n$, $s$, represent the corresponding kernel size, number of feature maps, and strides in each convolutional layer. And $N$ indicates the number of neurons in the dense layer
 
@@ -174,7 +174,7 @@ The architecture of $D_{A}$ and $D_{B}$ is illustrated in Figure 4. We follow th
 
 ##### Feature Extractor: $FE_{A}$ and $FE_{B}$
 
-![VGG_19](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/VGG_19.png)
+![VGG_19](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/VGG_19.png)
 
 Figure 5: **The architecture of $FE_{A}$ and $FE_{B}$**: Inspired by VGG19.The description in each convolutional layer is the index of itself, i.e., "Conv1-1": the first convolutional layer of block 1. The number in each convolutional layer denotes kernel size and the number of feature maps, i.e., ''3-64": kernel size: 3x3, number of feature maps: 64.
 
@@ -187,7 +187,7 @@ In the UBCDTN, we design two feature extractor $FE_{A}$ and $FE_{B}$, and the ar
 In this section, we demonstrate how to generate the desired $I^{SR}$ from the $\widehat{I}^{LR}_{real}$ produced by UBCDTN. Because of the powerful generalization ability of SEGA-FURN, we can adopt the main structure of SEGAN-FURN as Semantic Encoder guided Super Resolution Network (SESRN). In addition, since SEGA-FURN aims to super-resolve face images, we make some modifications to satisfy the demand for real-world natural image super-resolution. First, we enlarge the generator to strengthen feature propagation and accelerate the convergence speed of the training process. Second, we add one more RIDB in each DNB, which can enhance the ability of feature extraction. Third, we fine-tune the whole model on the natural image dataset. From the observation of experiments,  all the components proposed in SEGA-FURN show the superior performance on the real-world natural images such as Semantic Encoder $SE$, Joint Discriminator $D_{SR}$, Generator $G_{SR}$ and Content Extractor $CE$. 
 First, we describe four main components of SESRN: generator, semantic encoder, joint discriminator, and content extractor. Second, we illustrate the optimization loss function RaLS for updating the generator and joint discriminator respectively. Finally, we express the overall total loss used in SESRN. The architecture of SESRN is illustrated in Figure 2. In addition, the structure of the joint discriminator and generator is shown in Figure 6 Moreover, the architecture of the proposed DNB and RIDB is presented in Figure 7.
 
-![UL_gendis_enlarge](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/UL_gendis_enlarge.png)
+![UL_gendis_enlarge](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/UL_gendis_enlarge.png)
 
 Figure 6. **Red dotted rectangle:** The architecture of the Generator. **Blue dotted rectangle**: The architecture of the Joint Discriminator. $F_{SF}$ denotes shallow features, $F_{MDBM}$ denotes the outputs of MDBM, $F_{GF}$ represents global features, and $F_{MHF}$ represents multiple hierarchical features. K, n, and s are the kernel size, number of filters, and strides respectively. N is the number of neurons in the dense layer.
 
@@ -217,7 +217,7 @@ where $f_{UM}$ represents the upsampling operation in UM, $H_{SESRN}$ represents
 
 #### Residual in Internal Dense Block
 
-![UL_RIDB_enlarge](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/UL_RIDB_enlarge.png)
+![UL_RIDB_enlarge](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/UL_RIDB_enlarge.png)
 
 Figure 7. **Top:** The architecture of Dense Nested Block (DNB). It consists of multiple RIDBs. **Bottom:** The architecture of proposed Residual in Internal Dense Block (RIDB).
 
@@ -229,7 +229,7 @@ As mentioned in Section 5.4.9, the novel architecture RIDB is proposed for the g
 
 In the SESRN, we also introduce the Semantic Encoder to extract semantic embedded (as shown in Figure 2), which is used to project input visual information (LR, HR) back to the latent space. From the experiment results, the semantic encoder still plays the important role in the SESRN. The semantic encoder is able to capture the useful semantic attributes reflected by the input image, which is beneficial to supervise discriminative problems.
 
-As for the classical GAN-based SR models URDGN \cite{URDGN}, SRGAN \cite{SRGAN}, ESRGAN \cite{ESRGAN_Wang}, they lack an ability that is capable of reversing visual image information (LR, HR) to the semantic latent representation \cite{BiGAN} even though they are good at mapping latent representations to image data distributions. Thus, we argue that the critical missing property of these methods is that they only exploit visual information (LR, HR) in their model, as the input during the discriminative procedure, ignoring the high-level semantic information reflected by latent representation. Previous GAN's work \cite{BiGAN,ALI} has proved that the resulting embedded semantics learned from the data distribution is beneficial to the discriminator to distinguish real and fake samples. Thus, in the SESRN, we introduce the semantic encoder to inversely map the real- world image distributions (HR and LR images) back into the latent representation. The same as SEGA-FURN, we named semantic latent representation extracted by the semantic encoder as an embedded semantics, in which it is able to reflect the image structures and attributes. In this case, the embedded semantics along with corresponding visual information (HR and LR images) are fed into the joint discriminator as a joint input tuple, in which it can be seen as the `label' for corresponding images. We utilize the VGG16 network pre-trained by imagenet as the semantic encoder. For the purpose of satisfying the different dimensions of HR and LR images, we adopt two Semantic Encoders which have the same structure but different input dimension (as shown in Figure 2) to obtain embedded semantics from different convolutional layers respectively. Embedded semantics leads to optimize the adversarial process of the generator and the joint discriminator, which drive SESRN to reconstruct the details of the super-resolved image accurately.
+As for the classical GAN-based SR models URDGN \cite{URDGN}, SRGAN \cite{SRGAN}, ESRGAN \cite{ESRGAN_Wang}, they lack an ability that is capable of reversing visual image information (LR, HR) to the semantic latent representation \cite{BiGAN} even though they are good at mapping latent representations to image data distributions. Thus, we argue that the critical missing property of these methods is that they only exploit visual information (LR, HR) in their model, as the input during the discriminative procedure, ignoring the high-level semantic information reflected by latent representation. Previous GAN's work \cite{BiGAN,ALI} has proved that the resulting embedded semantics learned from the data distribution is beneficial to the discriminator to distinguish real and fake samples. Thus, in the SESRN, we introduce the semantic encoder to inversely map the real- world image distributions (HR and LR images) back into the latent representation. The same as SEGA-FURN, we named semantic latent representation extracted by the semantic encoder as an embedded semantics, in which it is able to reflect the image structures and attributes. In this case, the embedded semantics along with corresponding visual information (HR and LR images) are fed into the joint discriminator as a joint input tuple, in which it can be seen as the "label" for corresponding images. We utilize the VGG16 network pre-trained by imagenet as the semantic encoder. For the purpose of satisfying the different dimensions of HR and LR images, we adopt two Semantic Encoders which have the same structure but different input dimension (as shown in Figure 2) to obtain embedded semantics from different convolutional layers respectively. Embedded semantics leads to optimize the adversarial process of the generator and the joint discriminator, which drive SESRN to reconstruct the details of the super-resolved image accurately.
 
 
 
@@ -253,7 +253,7 @@ where $I_{HR} \sim P_{I^{HR}}$ and $I_{SR} \sim P_{I^{SR}}$ indicate the HR imag
 
 #### Content Extractor
 
-In SESRN, we further leverage the pre-trained VGG19 network as content extractor $\phi$ to obtain feature representations, where it used to formulate the content loss $L_{content}$. Specifically, we calculate the $L_{content}$ based on the Euclidean distance between two feature representations of SR images and HR images. We extract feature representations from the `Conv3\_3' layer in the content extractor, which is the low-level features before the activation layer. With this loss term, the SESRN is encouraged to reconstruct finer high-frequency details and improve the perceptual quality.
+In SESRN, we further leverage the pre-trained VGG19 network as content extractor $\phi$ to obtain feature representations, where it used to formulate the content loss $L_{content}$. Specifically, we calculate the $L_{content}$ based on the Euclidean distance between two feature representations of SR images and HR images. We extract feature representations from the "Conv3\_3" layer in the content extractor, which is the low-level features before the activation layer. With this loss term, the SESRN is encouraged to reconstruct finer high-frequency details and improve the perceptual quality.
 
 
 
@@ -307,7 +307,7 @@ The complete objective loss $L^{UBCDT-GAN}_{total}$ encourages the proposed meth
 
 In this section, we first present the datasets and details used for our experiments. Second, we evaluate the quantitative and qualitative performance of the proposed UBCDT-GAN by comparing with several state-of-the-art SISR methods. 
 
-![Chapter05_samples](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/Experiments/Chapter05_samples.png) 
+![Chapter05_samples](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/Chapter05_samples.png) 
 
 Figure 8. The sample images of NTIRE\_2020\_T1 validation dataset. The top row presents HR images (256 × 256 pixels) and the bottom row shows corresponding LR images (64 × 64 pixels).
 
@@ -337,11 +337,11 @@ To quantitatively compare the performance of different methods, we utilize the m
 
 We compare our method with other real-world super-resolution methods on the NTIRE 2020 Track 1 real-world dataset quantitatively and qualitatively. The Figure 9 and 5.10 present the qualitative comparisons of the proposed method with other state-of-the-art methods. In Table 1 and Table 2, we further provide the evaluation of quantitative results between our method and compared methods. It is emphasized that we present the quantitative evaluation of all the state-of-the-art methods, which are cited from their official published paper. Moreover, as for qualitative comparison, we directly download released codes and pre-trained models of the compared methods. Then, we carefully re-implement referenced methods on the same testing dataset to obtain effective results.
 
-![quan_table1](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/quan_table1.png)
+![quan_table1](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/quan_table1.png)
 
 Table 1. Quantitative comparison on NTIRE 2020 Real World Super-Resolution Challenge Track 1 validation dataset of the proposed method against participating methods, in terms of average PSNR (dB) and SSIM for upscale factor 4×. The bold results indicate the best performance.
 
-![quan_table2](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/quan_table2.png)
+![quan_table2](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/quan_table2.png)
 
 Table 2. Quantitative comparison on NTIRE 2020 Real World Super-Resolution Challenge Track 1 validation dataset of the proposed method against state-of-the-art methods. The bold results indicate the best performance.
 
@@ -361,29 +361,29 @@ The visual comparisons are provided in Figure 9 and 10. To comprehensively evalu
 
 To be specific, we first compare our method with the traditional interpolation-based SR method, Bicubic and Nearest Neighbor, which utilize mathematical techniques to recover HR image from LR image. Moreover, we also introduce two NTIRE 2020 Challenge baseline GAN-based SR methods, SRGAN and ESRGAN, which are designed for a supervised manner and trained on Bicubic downsampled image. In addition, we further explore the latest representative unsupervised methods, CycleGAN and ZSSR. The CycleGAN is an unpaired image translation method, which can translate LR image from the source domain to the target HR domain. As for ZSSR, it merely takes a single LR image as input during training and testing stages and learns to explore internal image information to reconstruct the given LR image. 
 
-![0887_SOA_CycGAN](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0887_SOA_CycGAN.png)
+![0887_SOA_CycGAN](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0887_SOA_ZSSR.png)
 
 
 
-![0822_SOA_CycGAN](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0822_SOA_CycGAN.png)
+![0822_SOA_CycGAN](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0822_SOA_ZSSR.png)
 
 
 
-![0821_SOA_CycGAN](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0821_SOA_CycGAN.png)
+![0821_SOA_CycGAN](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0821_SOA_ZSSR.png)
 
 Figure 9. Qualitative comparison of visual results with state-of-the-art methods on NTIRE 2020 Real World Track 1 image "0887", "0822", "0821". Our method produce photo-realistic results.
 
 
 
-![0891_SOA_CycGAN](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0891_SOA_CycGAN.png)
+![0891_SOA_CycGAN](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0891_SOA_ZSSR.png)
 
 
 
-![0820_SOA_CycGAN](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0820_SOA_CycGAN.png)
+![0820_SOA_CycGAN](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0820_SOA_ZSSR.png)
 
 
 
-![0892_SOA_CycGAN](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0892_SOA_CycGAN.png)
+![0892_SOA_CycGAN](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0892_SOA_ZSSR.png)
 
 Figure 10. Qualitative comparison of visual results with state-of-the-art methods on NTIRE 2020 Real World Track 1 image "0891", "0820", "0892". Our method produce photo-realistic results.
 
@@ -399,33 +399,35 @@ In this section, we conduct the ablation study to further investigate the compon
 
 
 
-![0829_Ablation](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0829_Ablation.png)
 
-![0896_Ablation](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0896_Ablation.png)
 
-![0824_Ablation](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0824_Ablation.png)
+
+![0829_Ablation](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0829_Ablation.png)
+
+![0896_Ablation](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0896_Ablation.png)
+
+![0824_Ablation](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0824_Ablation.png)
 
 Figure 11. Qualitative comparisons of different variants in our ablation study. The visual results on image "0829", "0896", "0824" from NTIRE 2020 Track 1 testing dataset with scale factor ×4. The best results are highlighted.
 
 
+![0803_Ablation](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0803_Ablation.png)
 
-![0803_Ablation](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0803_Ablation.png)
+![0836_Ablation](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0836_Ablation.png)
 
-![0836_Ablation](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0836_Ablation.png)
-
-![0861_Ablation](/Users/wangxiang/Downloads/thesis_diagram/download_latex/experiments/0861_Ablation.png)
+![0861_Ablation](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Experiments/0861_Ablation.png)
 
 Figure 12. Qualitative comparisons of different variants in our ablation study. The visual results on image "0803", "0836", "0861" from NTIRE 2020 Track 1 testing dataset with scale factor ×4. The best results are highlighted.
 
 
 
-![Variant_Table](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/Variant_Table.png)
+![Variant_Table](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Variant_Table.png)
 
 Table 3. The compared variants of the proposed method in the ablation study and the descriptions of the proposed components. The tick indicates that this variant includes this component
 
 
 
-![Variant_comparision](/Users/wangxiang/Desktop/UBCDT-GAN/diagram/Variant_comparision.png)
+![Variant_comparision](https://github.com/KennethXiang/Unsupervised-Bidirectional-Cycle-Domain-Transfer-Learning-based-Generative-Adversarial-Network/blob/main/diagram/Variant_comparision.png)
 
 Table 4. Quantitative results of ablation study with different variants on NTIRE 2020 validation T1 dataset, in terms of average PSNR (dB) and SSIM for upscale factor 4×. The bold results indicate the best performance.
 
