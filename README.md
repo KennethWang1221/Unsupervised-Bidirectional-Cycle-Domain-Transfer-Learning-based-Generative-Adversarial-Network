@@ -2,6 +2,12 @@
 
 
 
+**Import Disclaimer Note**
+
+This work has been submitted to the IEEE for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible.
+
+
+
 ## Overview
 
 Deep Convolutional Neural Networks have exhibited impressive performance on image super-resolution by reconstructing a high resolution image from a low resolution image. However, most state-of-the-art methods heavily rely on two limited properties where the training LR and HR images are paired and artificially pre-determined by known degradation kernel (i.e., bicubic downsampling ) to train the networks in the fully supervised fusion. As a result, existing methods fail to deal with real world super resolution tasks, since the paired LR and HR images in real world scenes are typically unavailable and degraded by the complicated and unknown kernel. To break these restrictions, in this paper, we propose the Unsupervised Bi-directional Cycle Domain Transfer Learning-based Generative Adversarial Network (UBCDT-GAN), which has the ability to super-resolve HR image from the real world LR image with complex and inevitable sensor noise in an unsupervised manner.  Our proposed method consists of an Unsupervised Bi-directional Cycle Domain Transfer Network (UBCDTN) and Semantic Encoder guided Super Resolution Network (SESRN). Firstly, the UBCDTN is able to produce approximated real-like LR image through transferring the LR image from artificial degraded domain to the real-world LR image domain with natural characteristics. Secondly, the SESRN takes the approximated real-like LR image as input and super-resolves it to a photo-realistic HR image. Extensive experiments on unpaired real-world image benchmark datasets demonstrate that the proposed method achieves promising performance compared to state-of-the-art methods. The overview of our method is shown in Fig.1
